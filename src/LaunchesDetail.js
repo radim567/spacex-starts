@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const LaunchesDetail = ({ allLaunches }) => {
-  const [year, setYear] = useState("Alle Jahre");
+  const [year, setYear] = useState('Alle Jahre');
 
   const getAllUniqueYears = () => {
-    const allYears = ["Alle Jahre"];
+    const allYears = ['Alle Jahre'];
     allLaunches.map((item) => {
       const yyyy = new Date(item.date_unix * 1000).getFullYear().toString();
       allYears.push(yyyy);
@@ -16,7 +16,7 @@ const LaunchesDetail = ({ allLaunches }) => {
 
   const allStartedLaunches = allLaunches.filter((item) => {
     const launchYear = new Date(item.date_unix * 1000).getFullYear().toString();
-    if (year === "Alle Jahre") {
+    if (year === 'Alle Jahre') {
       return allLaunches;
     } else {
       return launchYear === year;
@@ -29,13 +29,11 @@ const LaunchesDetail = ({ allLaunches }) => {
 
   return (
     <>
-      <p>
-        <i>WIFI Pflichtübung 5 - ReactJS (SpaceX Starts)</i>
-      </p>
+      <h2>Space X Missions</h2>
       <br />
       <div>
         <div>
-          <h3>Bitte das gewünschte Jahr auswählen:</h3>
+          <h3>Choose the year:</h3>
           <select value={year} onChange={handleChange}>
             {getAllUniqueYears().map((item, index) => (
               <option key={index} value={item}>
@@ -59,7 +57,7 @@ const LaunchesDetail = ({ allLaunches }) => {
                     <img
                       src={item.links.patch.small}
                       alt={item.name}
-                      height="70"
+                      height='70'
                     />
                   </td>
                   <td>{item.name}</td>
